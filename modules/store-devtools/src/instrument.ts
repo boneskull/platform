@@ -73,21 +73,15 @@ export function createShouldInstrument(injector: Injector, config: StoreDevtools
   return injector.get(config.shouldInstrument);
 }
 
-@NgModule({
-  imports: [
-    StoreModule
-  ],
-  providers: [
-    DevtoolsExtension,
-    DevtoolsDispatcher,
-    StoreDevtools,
-  ]
-})
+@NgModule({ })
 export class StoreDevtoolsModule {
   static instrument(options: StoreDevtoolsOptions = {}): ModuleWithProviders {
     return {
       ngModule: StoreDevtoolsModule,
       providers: [
+        DevtoolsExtension,
+        DevtoolsDispatcher,
+        StoreDevtools,
         {
           provide: INITIAL_OPTIONS,
           useValue: options
